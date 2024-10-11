@@ -1,0 +1,17 @@
+{
+  "name": "nazriel/app-bukutamu",
+  "autoload": {
+    "psr-4": {
+      "Nazril\\AppBukutamu\\": "src/"
+    }
+  },
+  "authors": [
+    {
+      "name": "Nanaz",
+      "email": "mnazrielalamsyah25@gmail.com"
+    }
+  ],
+  "require": {
+    "phpoffice/phpspreadsheet": "^3.3"
+  }
+}

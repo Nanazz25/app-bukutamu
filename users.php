@@ -1,5 +1,11 @@
 <?php
 include_once('templates/header.php');
+
+//pengecekan user role bukan admin maka tidak boleh mengakses halaman
+if($_SESSION['role'] != 'admin'){
+    echo"<script>alert('anda tidal memiliki akses')</script>";
+    echo"<script>window.location.href='index.php'</script>";
+}
 ?>
 
 <!-- Begin Page Content -->
@@ -57,7 +63,7 @@ include_once('templates/header.php');
             <?php
             // mengambil data user dari tabel dengan kode terbesar
             $query = mysqli_query($koneksi, "SELECT max(id_user) as kodeTerbesar FROM users");
-            $data = mysqli_fetch_array($query);
+            $data = mysqli_fetch_array(result: $query);
             $kodeuser = $data['kodeTerbesar'];
             // mengambil angka dari kode user terbesar, menggunakan fungsi substr dan diubah ke integer dengan (int)
             $urutan = (int) substr($kodeuser, 3);

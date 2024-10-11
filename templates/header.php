@@ -74,12 +74,17 @@ if (!isset($_SESSION['login'])) {
                     <span>Laporan</span></a>
             </li>
 
+            <?php
+            // cek apabila ada user login dan user role nya adalah admin maka tampilkan user
+            if(isset($_SESSION['role']) && $_SESSION['role'] == 'admin') :
+            ?>
             <!-- Nav Item - User -->
             <li class="nav-item">
                 <a class="nav-link" href="users.php">
                     <i class="fas fa-fw fa-user"></i>
                     <span>User</span></a>
             </li>
+            <?php endif; ?>
 
         </ul>
         <!-- End of Sidebar -->

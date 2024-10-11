@@ -15,7 +15,7 @@ include_once('templates/header.php');
     $kodeTamu = $data['kodeTerbesar'];
     ?>
 
-    // jika ada tombol simpan
+    <!-- jika ada tombol simpan -->
     <?php
     if (isset($_POST['simpan'])) {
         if (ubah_tamu($_POST) > 0) {
@@ -26,9 +26,9 @@ include_once('templates/header.php');
             <?php
         } else {
             ?>
-<!--             <div class="alert alert-danger" role="alert">
+            <div class="alert alert-danger" role="alert">
                 Data gagal diubah!
-            </div> -->
+            </div>
             <?php
         }
     }
@@ -69,7 +69,7 @@ include_once('templates/header.php');
                 <label for="bertemu" class="col-sm-3 col-form-label">Bertemu Dengan</label>
                 <div class="col-sm-8">
                     <input type="text" class="form-control" id="bertemu" name="bertemu"
-                        value="<?= $data['bertemu'] ?>]">
+                        value="<?= $data['bertemu'] ?>">
                 </div>
             </div>
             <div class="form-group row">

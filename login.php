@@ -22,6 +22,9 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
             // set session
             $_SESSION['login'] = true;
             $_SESSION['username'] = $username;
+            $_SESSION['role'] = $row['user_role'];
+
+            //login berhasil
             header('location: index.php');
             exit;
         } else {
