@@ -116,7 +116,8 @@ function ubah_tamu($data)
             kepentingan = '$kepentingan'
             WHERE id_tamu = '$id'";
 
-    echo "Query: " . $query . "<br>"; // Display the actual query
+    // echo "Query: " . $query . "<br>";
+    // Display the actual query
 
     if (mysqli_query($koneksi, $query)) {
         return mysqli_affected_rows($koneksi);
@@ -163,5 +164,7 @@ function ganti_password($data)
 
     return mysqli_affected_rows($koneksi);
 }
+
+
 
 ?>

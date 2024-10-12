@@ -83,7 +83,7 @@ if(isset($_POST['tampilkan'])){
                             <th>No. Telp/HP</th>
                             <th>Bertemu Dengan</th>
                             <th>Kepentingan</th>
-                            <th>Aksi</th>
+                            <!-- <th>Aksi</th> -->
                         </tr>
                     </thead>
                     <tbody>
@@ -100,14 +100,14 @@ if(isset($_POST['tampilkan'])){
                                     <td><?= $no++; ?></td>
                                     <td><?= $tamu['tanggal'] ?></td>
                                     <td><?= $tamu['nama_tamu'] ?></td>
-                                    <td><?= $tamu['alamat'] ?> TEsT</td>
+                                    <td><?= $tamu['alamat'] ?></td>
                                     <td><?= $tamu['no_hp'] ?></td>
                                     <td><?= $tamu['bertemu'] ?></td>
                                     <td><?= $tamu['kepentingan'] ?></td>
                                     <td>
-                                        <a class="btn btn-success" href="edit-tamu.php?id=<?= $tamu['id_tamu'] ?>">Ubah</a>
+                                        <!-- <a class="btn btn-success" href="edit-tamu.php?id=<?= $tamu['id_tamu'] ?>">Ubah</a>
                                         <a onclick="return confirm('Apakah anda yakin ingin menghapus data ini?');"
-                                            class="btn btn-danger" href="hapus-tamu.php?id=<?= $tamu['id_tamu'] ?>">Hapus</a>
+                                            class="btn btn-danger" href="hapus-tamu.php?id=<?= $tamu['id_tamu'] ?>">Hapus</a> -->
                                     </td>
                                 </tr>
                             <?php endforeach; ?>
