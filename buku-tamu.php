@@ -173,6 +173,9 @@ if($_SESSION['role'] != 'operator'){
                                             style="width: 66.2px;">Bertemu Dengan</th>
                                         <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1"
                                             colspan="1" aria-label="Salary: activate to sort column ascending"
+                                            style="width: 66.2px;">Gambar</th>
+                                        <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1"
+                                            colspan="1" aria-label="Salary: activate to sort column ascending"
                                             style="width: 106.2px;">Aksi</th>
                                     </tr>
                                 </thead>
@@ -190,6 +193,13 @@ if($_SESSION['role'] != 'operator'){
                                             <td><?= $tamu['alamat'] ?></td>
                                             <td><?= $tamu['bertemu'] ?></td>
                                             <td><?= $tamu['kepentingan'] ?></td>
+                                            <td>
+                                                <?php if ($tamu['gambar']) : ?>
+                                                    <img src="src/upload_gambar/<?= $tamu['gambar'] ?>" width="60" alt="Foto Tamu">
+                                                <?php else : ?>
+                                                    <span>Tidak ada foto</span>
+                                                <?php endif; ?>
+                                            </td> <!-- Tampilkan gambar -->
                                             <td class="d-flex justify-content-center align-items-center">
                                                 <a class="btn btn-success"
                                                     href="edit-tamu.php?id=<?= $tamu['id_tamu'] ?>">Ubah</a>

@@ -6,12 +6,12 @@ if(isset($_POST['tampilkan'])){
     $p_awal = $_POST['p_awal'];
     $p_akhir = $_POST['p_akhir'];
 
-    $link = "export-laporan.php?cari=true&p_awal=&p_awal&p_akhir=&p_akhir";
-    //query sesuai dengan keyword
+    $link = "export-laporan.php?cari=true&p_awal=$p_awal&p_akhir=$p_akhir";
+    //query sesuai dengan periode yang dipilih
     $buku_tamu = query("SELECT * FROM buku_tamu WHERE tanggal BETWEEN '$p_awal' AND '$p_akhir' ");
 } else {
     //query ambil semua data buku tamu
-    $buku_tamu = query( "SELECT * FROM buku_tamu ORDER BY tanggal DESC");
+    $buku_tamu = query("SELECT * FROM buku_tamu ORDER BY tanggal DESC");
 }
 
 ?>
@@ -36,19 +36,16 @@ if(isset($_POST['tampilkan'])){
                                             <div class="font-weight-bold text-primary text-uppercase mb-1">Periode</div>
                                         </div>
                                         <div class="col-auto">
-                                            <input type="date" class="form-control mb-2" id="p_awal" name="p_awal"
-                                                required>
+                                            <input type="date" class="form-control mb-2" id="p_awal" name="p_awal" required>
                                         </div>
                                         <div class="col-auto">
                                             <div class="font-weight-bold text-primary mb-1">s.d</div>
                                         </div>
                                         <div class="col-auto">
-                                            <input type="date" class="form-control mb-2" id="p_akhir" name="p_akhir"
-                                                required>
+                                            <input type="date" class="form-control mb-2" id="p_akhir" name="p_akhir" required>
                                         </div>
                                         <div class="col-auto">
-                                            <button type="submit" name="tampilkan"
-                                                class="btn btn-primary mb-2">Tampilkan</button>
+                                            <button type="submit" name="tampilkan" class="btn btn-primary mb-2">Tampilkan</button>
                                         </div>
                                 </form>
                             </div>
@@ -64,7 +61,7 @@ if(isset($_POST['tampilkan'])){
     <!-- -->
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <a href="<?= isset($_POST['tampilkan']) ? $link : 'export-laporan.php' ; ?>" target='_blank' class="btn btn-success btn-icon-split">
+            <a href="<?= isset($_POST['tampilkan']) ? $link : 'export-laporan.php'; ?>" target='_blank' class="btn btn-success btn-icon-split">
                 <span class="icon text-white-50">
                     <i class="fas fa-file-excel"></i>
                 </span>
@@ -83,7 +80,7 @@ if(isset($_POST['tampilkan'])){
                             <th>No. Telp/HP</th>
                             <th>Bertemu Dengan</th>
                             <th>Kepentingan</th>
-                            <!-- <th>Aksi</th> -->
+                            <th>Gambar</th> <!-- Kolom Foto -->
                         </tr>
                     </thead>
                     <tbody>
@@ -91,10 +88,9 @@ if(isset($_POST['tampilkan'])){
                         if (isset($_POST['tampilkan'])) {
                             $p_awal = $_POST['p_awal'];
                             $p_akhir = $_POST['p_akhir'];
-                            // penomoran auto-increment
+                            // Penomoran auto-increment
                             $no = 1;
-                            //query untuk memanggil semua data buku dari tabel buku_tamu
-                            $buku_tamu = query("SELECT * FROM buku_tamu WHERE tanggal BETWEEN '$p_awal' AND '$p_akhir' ");
+                            // Loop melalui data buku tamu yang sudah difilter
                             foreach ($buku_tamu as $tamu) : ?>
                                 <tr>
                                     <td><?= $no++; ?></td>
@@ -105,9 +101,11 @@ if(isset($_POST['tampilkan'])){
                                     <td><?= $tamu['bertemu'] ?></td>
                                     <td><?= $tamu['kepentingan'] ?></td>
                                     <td>
-                                        <!-- <a class="btn btn-success" href="edit-tamu.php?id=<?= $tamu['id_tamu'] ?>">Ubah</a>
-                                        <a onclick="return confirm('Apakah anda yakin ingin menghapus data ini?');"
-                                            class="btn btn-danger" href="hapus-tamu.php?id=<?= $tamu['id_tamu'] ?>">Hapus</a> -->
+                                        <?php if ($tamu['gambar']) : ?>
+                                            <img src="src/upload_gambar/<?= $tamu['gambar'] ?>" width="60" alt="Foto Tamu">
+                                        <?php else : ?>
+                                            <span>Tidak ada foto</span>
+                                        <?php endif; ?>
                                     </td>
                                 </tr>
                             <?php endforeach; ?>
@@ -119,8 +117,6 @@ if(isset($_POST['tampilkan'])){
         </div>
     </div>
 </div>
-
-
 
 </div>
 
