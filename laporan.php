@@ -120,10 +120,6 @@ if(isset($_POST['tampilkan'])){
 
 </div>
 
-</div>
-
-</div>
-</div>
 <!-- /.container-fluid -->
 
 <?php
