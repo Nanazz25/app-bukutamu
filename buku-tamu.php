@@ -139,8 +139,7 @@ if($_SESSION['role'] != 'operator'){
                         </div>
                         <div class="col-sm-12 col-md-6">
                             <div id="dataTable_filter" class="dataTables_filter"><label>Search:<input type="search"
-                                        class="form-control form-control-sm" placeholder=""
-                                        aria-controls="dataTable"></label></div>
+                            class="form-control form-control-sm" placeholder="" aria-controls="dataTable"></label></div>
                         </div>
                     </div>
                     <div class="row">
