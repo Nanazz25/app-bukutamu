@@ -8,12 +8,6 @@ include_once('templates/header.php');
 
     <!-- Page Heading -->
     <h1 class="h3 mb-4 text-gray-800">Ubah Data Tamu</h1>
-    <?php
-    // mengambil data barang dari tabel dengan kode terbesar
-    $query = mysqli_query($koneksi, "SELECT max(id_tamu) as kodeTerbesar FROM buku_tamu");
-    $data = mysqli_fetch_array($query);
-    $kodeTamu = $data['kodeTerbesar'];
-    ?>
 
     <!-- jika ada tombol simpan -->
     <?php
@@ -45,7 +39,7 @@ include_once('templates/header.php');
 
     <div class="card-body">
         <form method="post" action="" enctype="multipart/form-data">
-            <input type="hidden" name="id_tamu" id="id_tamu" value="<?= $kodeTamu ?>">
+            <input type="hidden" name="id_tamu" id="id_tamu" value="<?= $data['id_tamu'] ?>">
             <input type="hidden" name="gambarLama" id="gambarLama" value="<?= $data['gambar'] ?>">
             <div class="form-group row">
                 <label for="nama_tamu" class="col-sm-3 col-form-label">Nama Tamu</label>

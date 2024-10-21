@@ -142,7 +142,7 @@ if($_SESSION['role'] != 'admin'){
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-sencondary"
                                         data-dismiss="modal">Keluar</button>
-                                    <button type="submit" name="simpan" class="btn btn-primary">Simpan</button>
+                                    <button type="submit" name="ganti_password" class="btn btn-primary">Simpan</button>
                                 </div>
                             </form>
                         </div>
