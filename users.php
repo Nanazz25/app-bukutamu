@@ -3,7 +3,7 @@ include_once('templates/header.php');
 
 //pengecekan user role bukan admin maka tidak boleh mengakses halaman
 if($_SESSION['role'] != 'admin'){
-    echo"<script>alert('anda tidal memiliki akses')</script>";
+    echo"<script>alert('anda tidak memiliki akses')</script>";
     echo"<script>window.location.href='index.php'</script>";
 }
 ?>
@@ -209,7 +209,7 @@ if($_SESSION['role'] != 'admin'){
                                                 </button>
                                                 <a class="btn btn-success"
                                                     href="edit-user.php?id=<?= $user['id_user'] ?>">Ubah</a>
-                                                <a onclick="confirm('Apakah anda yakin ingin menghapus data ini?')"
+                                                <a onclick="return confirm('Apakah anda yakin ingin menghapus data ini?')"
                                                     href="hapus-user.php?id=<?= $user['id_user'] ?>"
                                                     class="btn btn-danger m-1" type="button">Hapus</a>
                                             </td>

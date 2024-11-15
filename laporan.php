@@ -2,7 +2,7 @@
 include_once('templates/header.php');
 require_once('function.php');
 
-if(isset($_POST['tampilkan'])){
+if (isset($_POST['tampilkan'])) {
     $p_awal = $_POST['p_awal'];
     $p_akhir = $_POST['p_akhir'];
 
@@ -24,7 +24,7 @@ if(isset($_POST['tampilkan'])){
     <!-- Periode Select -->
     <div class="row mx-auto d-flex justify-content-center">
         <!--Periode Awal -->
-        <div class="col-xl-5 col-md-6 mb-4">
+        <div class="col-xl-7 col-md-6 mb-4">
             <div class="card border-left-primary shadow h-100 py-2">
                 <div class="card-body">
                     <div class="row no-gutters align-items-center">
@@ -36,17 +36,21 @@ if(isset($_POST['tampilkan'])){
                                             <div class="font-weight-bold text-primary text-uppercase mb-1">Periode</div>
                                         </div>
                                         <div class="col-auto">
-                                            <input type="date" class="form-control mb-2" id="p_awal" name="p_awal" required>
+                                            <input type="date" class="form-control mb-2" id="p_awal" name="p_awal"
+                                                required>
                                         </div>
                                         <div class="col-auto">
                                             <div class="font-weight-bold text-primary mb-1">s.d</div>
                                         </div>
                                         <div class="col-auto">
-                                            <input type="date" class="form-control mb-2" id="p_akhir" name="p_akhir" required>
+                                            <input type="date" class="form-control mb-2" id="p_akhir" name="p_akhir"
+                                                required>
                                         </div>
                                         <div class="col-auto">
-                                            <button type="submit" name="tampilkan" class="btn btn-primary mb-2">Tampilkan</button>
+                                            <button type="submit" name="tampilkan"
+                                                class="btn btn-primary mb-2">Tampilkan</button>
                                         </div>
+                                    </div>
                                 </form>
                             </div>
                         </div>
@@ -61,7 +65,8 @@ if(isset($_POST['tampilkan'])){
     <!-- -->
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <a href="<?= isset($_POST['tampilkan']) ? $link : 'export-laporan.php'; ?>" target='_blank' class="btn btn-success btn-icon-split">
+            <a href="<?= isset($_POST['tampilkan']) ? $link : 'export-laporan.php'; ?>" target='_blank'
+                class="btn btn-success btn-icon-split">
                 <span class="icon text-white-50">
                     <i class="fas fa-file-excel"></i>
                 </span>
@@ -83,43 +88,41 @@ if(isset($_POST['tampilkan'])){
                             <th>Gambar</th> <!-- Kolom Foto -->
                         </tr>
                     </thead>
-                    <tbody>
-                        <?php
-                        if (isset($_POST['tampilkan'])) {
-                            $p_awal = $_POST['p_awal'];
-                            $p_akhir = $_POST['p_akhir'];
-                            // Penomoran auto-increment
-                            $no = 1;
-                            // Loop melalui data buku tamu yang sudah difilter
-                            foreach ($buku_tamu as $tamu) : ?>
-                                <tr>
-                                    <td><?= $no++; ?></td>
-                                    <td><?= $tamu['tanggal'] ?></td>
-                                    <td><?= $tamu['nama_tamu'] ?></td>
-                                    <td><?= $tamu['alamat'] ?></td>
-                                    <td><?= $tamu['no_hp'] ?></td>
-                                    <td><?= $tamu['bertemu'] ?></td>
-                                    <td><?= $tamu['kepentingan'] ?></td>
-                                    <td>
-                                        <?php if ($tamu['gambar']) : ?>
-                                            <img src="src/upload_gambar/<?= $tamu['gambar'] ?>" width="60" alt="Foto Tamu">
-                                        <?php else : ?>
-                                            <span>Tidak ada foto</span>
-                                        <?php endif; ?>
-                                    </td>
-                                </tr>
-                            <?php endforeach; ?>
-                        <?php } ?>
-                    </tbody>
-
-                </table>
+                        <tbody>
+                            <?php
+                            if (isset($_POST['tampilkan'])) {
+                                $p_awal = $_POST['p_awal'];
+                                $p_akhir = $_POST['p_akhir'];
+                                // Penomoran auto-increment
+                                $no = 1;
+                                // Loop melalui data buku tamu yang sudah difilter
+                                foreach ($buku_tamu as $tamu): ?>
+                                    <tr>
+                                        <td><?= $no++; ?></td>
+                                        <td><?= $tamu['tanggal'] ?></td>
+                                        <td><?= $tamu['nama_tamu'] ?></td>
+                                        <td><?= $tamu['alamat'] ?></td>
+                                        <td><?= $tamu['no_hp'] ?></td>
+                                        <td><?= $tamu['bertemu'] ?></td>
+                                        <td><?= $tamu['kepentingan'] ?></td>
+                                        <td>
+                                            <?php if ($tamu['gambar']): ?>
+                                                <img src="src/upload_gambar/<?= $tamu['gambar'] ?>" width="60" alt="Foto Tamu">
+                                            <?php else: ?>
+                                                <span>Tidak ada foto</span>
+                                            <?php endif; ?>
+                                        </td>
+                                    </tr>
+                                <?php endforeach; ?>
+                            <?php } ?>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
-</div>
-
+</>
 <!-- /.container-fluid -->
 
 <?php
